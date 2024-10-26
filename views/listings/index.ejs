@@ -1,0 +1,101 @@
+<% layout("/layouts/boilerplate") %>
+
+<div id="filters" class="">
+  <div class="filter">
+    <i class="fa-solid fa-fire"></i>
+    <p>Trending</p>
+  </div>
+  <div class="filter">
+    <i class="fa-solid fa-bed"></i>
+    <p>Rooms</p>
+  </div>
+  <div class="filter">
+    <i class="fa-solid fa-umbrella-beach"></i>
+    <p>Beaches</p>
+  </div>
+  <div class="filter">
+    <i class="fa-solid fa-mountain"></i>
+    <p>Mountains</p>
+  </div>
+  <div class="filter">
+    <i class="fa-solid fa-person-hiking"></i>
+    <p>Hiking</p>
+  </div>
+  <div class="filter">
+    <i class="fa-solid fa-campground"></i>
+    <p>Camping</p>
+  </div>
+  <div class="filter">
+    <i class="fa-brands fa-fort-awesome"></i>
+    <p>Castles</p>
+  </div>
+  <div class="filter">
+    <i class="fa-solid fa-person-skiing"></i>
+    <p>Skii</p>
+  </div>
+  <div class="filter">
+    <i class="fa-solid fa-igloo"></i>
+    <p>Igloo</p>
+  </div>
+  <div class="filter">
+    <i class="fa-regular fa-snowflake"></i>
+    <p>arctic</p>
+  </div>
+  <div class="filter">
+    <i class="fa-solid fa-sailboat"></i>
+    <p>Boat</p>
+  </div>
+
+  <div class="tax-toggle">
+    <div class="form-check-reverse form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="flexSwitchCheckDefault"
+      />
+      <label class="form-check-label" for="flexSwitchCheckDefault"
+        >Prices after total taxes</label
+      >
+    </div>
+  </div>
+</div>
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+  <% allListings.map((listing)=>{ %>
+  <a href="/listings/<%=listing._id%>" class="listing-link">
+    <div class="card col listing-card">
+      <img
+        src="<%=listing.image.url%>"
+        class="card-img-top"
+        style="height: 20rem"
+        alt="img"
+      />
+      <div class="card-img-overlay"></div>
+      <div class="card-body">
+        <p class="card-text">
+          <b> <%= listing.title %></b> <br />
+          <% if (listing.price) { %> &#8377;<%=
+          listing.price.toLocaleString("en-IN") %>/night <% } else { %> Price
+          not available <% } %>
+          <i class="taxes"> &nbsp; &nbsp; +18% GST</i>
+        </p>
+        <br />
+      </div>
+    </div>
+    <% })%>
+  </a>
+</div>
+<script>
+  let taxToggle = document.querySelector("#flexSwitchCheckDefault");
+  taxToggle.addEventListener("click", () => {
+    let taxes = document.querySelectorAll(".taxes");
+
+    for (tax of taxes) {
+      if (tax.style.display != "inline") {
+        tax.style.display = "inline";
+      } else {
+        tax.style.display = "none";
+      }
+    }
+  });
+</script>
