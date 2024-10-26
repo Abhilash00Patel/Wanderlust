@@ -23,7 +23,7 @@ require('console');
 
 
 
-let port = 3000;
+let port = 8080;
 app.set("view engine" , "ejs")
 app.set("views" , path.join(__dirname , "/views"))
 app.use(methodOverride("_method"));
@@ -57,7 +57,7 @@ store.on("error", (err)=>{
 
 const sessionOptions = {
     store,
-    secret: "mysupersecretcode",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized : true,
     cookie: {
@@ -91,9 +91,6 @@ app.use((req,res,next)=>{
     next()
 })
 
-app.get("/", (req, res) => {
-    res.send("Welcome to Wanderlust!");
-});
 
 
 app.use("/listings" , listingsRouter)
