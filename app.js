@@ -23,7 +23,7 @@ require('console');
 
 
 
-let port = 8080;
+
 app.set("view engine" , "ejs")
 app.set("views" , path.join(__dirname , "/views"))
 app.use(methodOverride("_method"));
@@ -48,7 +48,7 @@ const store = MongoStore.create({
     crypto: {
         secret: process.env.SECRET
       },
-      touchAfter: 24* 3600,
+      touchAfter: 24*3600,
 })
 
 store.on("error", (err)=>{
@@ -79,10 +79,7 @@ passport.deserializeUser(User.deserializeUser());
 
 passport.use(new LocalStrategy(User.authenticate()))
 
-app.listen(port, ()=>{
-    console.log("app is listening")
-    
-})
+
 
 app.use((req,res,next)=>{
     res.locals.success = req.flash("success")
@@ -109,6 +106,10 @@ app.use( (err,req,res)=>{
     res.status(status).render("listings/error.ejs" , {message})
 })
 
+
+app.listen(8080, ()=>{
+    console.log(" server is listening at 8080")
+ }) 
 
 
 
