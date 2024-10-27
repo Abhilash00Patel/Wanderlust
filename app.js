@@ -1,7 +1,7 @@
 if(process.env.NODE_ENV != "production"){
     require('dotenv').config()
 }
-
+const PORT = process.env.PORT || 8080;
 const express = require("express");
 const app = express()
 const mongoose = require('mongoose'); 
@@ -40,6 +40,7 @@ async function main() {
 main().then(()=>{
     console.log("database connected")
 }).catch(err => console.log(err));
+
 
 
 const store = MongoStore.create({
@@ -106,7 +107,7 @@ app.use( (err,req,res)=>{
 })
 
 
-const PORT = process.env.PORT || 8080; // Line to set the PORT variable
+
 
 
 app.listen(PORT, () => {
