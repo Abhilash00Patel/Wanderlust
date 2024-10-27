@@ -97,9 +97,9 @@ app.use("/listings/:id/reviews",reviewsRouter)
 
 app.use("/" , usersRouter)
 
-app.all("*", (req,res,next)=>{
-    next(new ExpressError(404,  "page not found!"))
-})
+// app.all("*", (req,res,next)=>{
+//     next(new ExpressError(404,  "page not found!"))
+// })
 
 app.use( (err,req,res)=>{
     let{status=500 , message = "sonething went wrong!"}  = err;
