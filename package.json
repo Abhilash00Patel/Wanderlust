@@ -1,5 +1,5 @@
 {
-  "engines":{
+  "engines": {
     "node": "22.9.0"
   },
   "name": "rev-majproject",
@@ -26,7 +26,8 @@
     "express-sessions": "^1.0.1",
     "joi": "^17.13.3",
     "method-override": "^3.0.0",
-    "mongoose": "^8.7.0",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.7.3",
     "multer": "^1.4.5-lts.1",
     "multer-storage-cloudinary": "^4.0.0",
     "nodemon": "^3.1.7",
